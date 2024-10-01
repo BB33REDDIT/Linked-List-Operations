@@ -1,5 +1,6 @@
 #include<stdio.h>  
 #include<stdlib.h>  
+int choice = 0; 
 struct node   
 {  
     int data;  
@@ -7,44 +8,42 @@ struct node
 };  
 struct node *head;  
   
-void beginsert ();   
-void lastinsert ();  
-void randominsert();  
-void begin_delete();  
-void last_delete();  
-void random_delete();  
+void insert_at_begining();   
+void insert_at_end();  
+void insert_at_specific_node();  
+void delete_from_begining();  
+void delete_from_end();  
+void delete_from_specific_node();  
 void display();  
 void search();  
-void main ()  
-{  
-    int choice =0;  
+
+void main()  
+{ 
     while(choice != 9)   
     {  
-        printf("\n\n*********Main Menu*********\n");  
-        printf("\nChoose one option from the following list ...\n");  
-        printf("\n===============================================\n");  
-        printf("\n1.Insert in begining\n2.Insert at last\n3.Insert at any random location\n4.Delete from Beginning\n  5.Delete from last\n 6.Delete node after specified location\n 7.Search for an element\n 8.Show\n 9.Exit\n");  
+        printf("\nChoose Operation\n");  
+        printf("\n1.Insert_In_Begining\n2.Insert_At_End\n3.Insert_At_Specific_Node\n4.Delete_from_Beginning\n5.Delete_From_End\n6.Delete_Node_After_Specified_Location\n7.Search_For_An_Element\n8.DISPLAY\n9.EXIT\n");  
         printf("\nEnter your choice?\n");         
         scanf("\n%d",&choice);  
         switch(choice)  
         {  
             case 1:  
-            beginsert();      
+            insert_at_begining();      
             break;  
             case 2:  
-            lastinsert();         
+            insert_at_end();         
             break;  
             case 3:  
-            randominsert();       
+            insert_at_specific_node();       
             break;  
             case 4:  
-            begin_delete();       
+            delete_from_begining();       
             break;  
             case 5:  
-            last_delete();        
+            delete_from_end();        
             break;  
             case 6:  
-            random_delete();          
+            delete_from_specific_node();          
             break;  
             case 7:  
             search();         
@@ -56,11 +55,11 @@ void main ()
             exit(0);  
             break;  
             default:  
-            printf("Please enter valid choice..");  
+            printf("Please enter valid choice");  
         }  
     }  
 }  
-void beginsert()  
+void insert_at_begining()  
 {  
     struct node *ptr;  
     int item;  
@@ -80,7 +79,7 @@ void beginsert()
     }  
       
 }  
-void lastinsert()  
+void insert_at_end()  
 {  
     struct node *ptr,*temp;  
     int item;     
@@ -91,7 +90,7 @@ void lastinsert()
     }  
     else  
     {  
-        printf("\nEnter value?\n");  
+        printf("\nEnter value\n");  
         scanf("%d",&item);  
         ptr->data = item;  
         if(head == NULL)  
@@ -114,7 +113,7 @@ void lastinsert()
         }  
     }  
 }  
-void randominsert()  
+void insert_at_specific_node()  
 {  
     int i,loc,item;   
     struct node *ptr, *temp;  
@@ -125,7 +124,7 @@ void randominsert()
     }  
     else  
     {  
-        printf("\nEnter element value");  
+        printf("\nEnter the value of element");  
         scanf("%d",&item);  
         ptr->data = item;  
         printf("\nEnter the location after which you want to insert ");  
@@ -146,7 +145,7 @@ void randominsert()
         printf("\nNode inserted");  
     }  
 }  
-void begin_delete()  
+void delete_from_begining()  
 {  
     struct node *ptr;  
     if(head == NULL)  
@@ -158,10 +157,10 @@ void begin_delete()
         ptr = head;  
         head = ptr->next;  
         free(ptr);  
-        printf("\nNode deleted from the begining ...\n");  
+        printf("\nNode deleted from the begining \n");  
     }  
 }  
-void last_delete()  
+void delete_from_end()  
 {  
     struct node *ptr,*ptr1;  
     if(head == NULL)  
@@ -172,7 +171,7 @@ void last_delete()
     {  
         head = NULL;  
         free(head);  
-        printf("\nOnly node of the list deleted ...\n");  
+        printf("\nOnly node of the list deleted \n");  
     }  
           
     else  
@@ -185,10 +184,10 @@ void last_delete()
         }  
         ptr1->next = NULL;  
         free(ptr);  
-        printf("\nDeleted Node from the last ...\n");  
+        printf("\nDeleted Node from the last \n");  
     }     
 }  
-void random_delete()  
+void delete_from_specific_node()  
 {  
     struct node *ptr,*ptr1;  
     int loc,i;    
@@ -221,7 +220,7 @@ void search()
     }  
     else  
     {   
-        printf("\nEnter item which you want to search?\n");   
+        printf("\nEnter item which you want to search? \n");   
         scanf("%d",&item);  
         while (ptr!=NULL)  
         {  
@@ -255,7 +254,7 @@ void display()
     }  
     else  
     {  
-        printf("\nTHE ELEMENTS ARE :\n");   
+        printf("\nTHE ELEMENTS ARE:\n");   
         while (ptr!=NULL)  
         {  
             printf("\n%d",ptr->data);  
